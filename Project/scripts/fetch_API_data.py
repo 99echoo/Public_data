@@ -3,8 +3,9 @@ import json
 import csv
 import os
 from dotenv import load_dotenv
+import pandas as pd
 
-
+#여성가족부_정책자료 데이터 로드
 def fetch_policy_data(csv_file_path):
 
     # .env 파일에서 환경 변수 로드
@@ -57,7 +58,11 @@ def fetch_policy_data(csv_file_path):
                     print(f"페이지 {page} 처리 중 오류 발생: {e}")
 
     print(f"CSV 파일이 저장된 위치: {csv_file_path}")
+    policy_data = pd.read_csv('C:/Users/kdh20/Desktop/Public_data/Project/data/여성가족부_정책자료.csv')
+    return policy_data
+#행정안전부_정책연구_과제정보 데이터 로드
 
-# 함수 호출 예시
-csv_file_path = "C:/Users/kdh20/Desktop/Public_data/Project/data/여성가족부_정책자료.csv"
-fetch_policy_data(csv_file_path)
+
+if __name__ == "__main__":
+   csv_file_path = "C:/Users/kdh20/Desktop/Public_data/Project/data/여성가족부_정책자료.csv"
+   policy_data = fetch_policy_data(csv_file_path)
